@@ -1,0 +1,19 @@
+name: GodScore CI (external repo test)
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  gv-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: GodScore gate – PASS case
+        uses: willshacklett/godscore-ci@main
+        with:
+          score: "0.85"
+          threshold: "0.80"
+          mode: "free"
